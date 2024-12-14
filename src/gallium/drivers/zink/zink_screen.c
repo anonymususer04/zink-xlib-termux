@@ -75,19 +75,8 @@ typedef unsigned char ubyte;
 static int num_screens = 0;
 bool zink_tracing = false;
 
-#if DETECT_OS_WINDOWS
-#include <io.h>
-#define VK_LIBNAME "vulkan-1.dll"
-#else
-#include <unistd.h>
-#if DETECT_OS_APPLE
-#define VK_LIBNAME "libvulkan.1.dylib"
-#elif DETECT_OS_ANDROID
+/** Removed handle macros for anothers platforms, just __ANDROID__ */
 #define VK_LIBNAME "libvulkan.so"
-#else
-#define VK_LIBNAME "libvulkan.so.1"
-#endif
-#endif
 
 #ifdef __APPLE__
 #include "MoltenVK/mvk_vulkan.h"
